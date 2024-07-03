@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   browserName,
   browserVersion,
@@ -5,26 +6,29 @@ import {
   osName,
   osVersion,
 } from 'react-device-detect';
-
-import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [state, setState] = useState(null);
+  const [apiData, setApiData] = useState(null);
 
   useEffect(() => {
-    fetch('http://ip-api.com/json')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setState(data);
-      });
+    fetch(
+      `https://api.ipdata.co/?api-key=${import.meta.env.VITE_API_PRIMARY_KEY}`
+    )
+      .then((res) => res.json())
+      .then((jsonData) => setApiData(jsonData))
+      .catch((error) => console.log('Error: ', error));
   }, []);
 
   return (
     <div>
-      <h1>Session fields</h1>
+      <h1>
+        <img
+          src='https://www.pamifactura.com/_next/image?url=%2Fassets%2FfacturaaPami.png&w=256&q=75'
+          alt='Pami Factura'
+          width='170'
+        />
+      </h1>
 
       <ul className='list'>
         <li>Browser: {browserName}</li>
@@ -42,13 +46,14 @@ function App() {
       </ul>
 
       <ul className='list'>
-        <li>IP Address: {state?.query}</li>
-        <li>Country Code: {state?.countryCode}</li>
-        <li>Country: {state?.country}</li>
-        <li>Region: {state?.regionName}</li>
-        <li>City: {state?.city}</li>
-        <li>Latitude: {state?.lat}</li>
-        <li>Longitude: {state?.lon}</li>
+        <li>IP Address: {apiData?.ip}</li>
+        <li>Country Code: {apiData?.country_code}</li>
+        <li>Country: {apiData?.country_name}</li>
+        <li>Region: {apiData?.region}</li>
+        <li>City: {apiData?.city}</li>
+        <li>Latitude: {apiData?.latitude}</li>
+        <li>Longitude: {apiData?.longitude}</li>
+
         <li>User Agent: {window.navigator.userAgent}</li>
         <li>Vendor: {window.navigator.vendor}</li>
         <li>Device Width: {screen.width}</li>
