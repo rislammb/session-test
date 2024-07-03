@@ -2,4 +2,4 @@
 
 This app shows the process of extracting various fields related to the session and displaying them in the browser.
 
-### [Open live]()
+### [Open live](https://rislammb-session-test.netlify.app/)
