@@ -20,6 +20,9 @@ function App() {
       .catch((error) => console.log('Error: ', error));
   }, []);
 
+  console.log({ browserName, browserVersion, deviceType, osName, osVersion });
+  console.log(apiData);
+
   return (
     <div>
       <h1>
