@@ -20,6 +20,8 @@ function App() {
       .catch((error) => console.log('Error: ', error));
   }, []);
 
+  console.log(apiData);
+
   return (
     <div>
       <h1>
