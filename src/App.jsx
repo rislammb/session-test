@@ -21,7 +21,6 @@ function App() {
   }, []);
 
   console.log({ browserName, browserVersion, deviceType, osName, osVersion });
-  console.log(apiData);
 
   return (
     <div>
