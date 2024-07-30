@@ -7,6 +7,7 @@ import {
   osVersion,
 } from 'react-device-detect';
 import './App.css';
+import Main from "./components/main";
 
 function App() {
   const [apiData, setApiData] = useState(null);
