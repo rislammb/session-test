@@ -7,6 +7,7 @@ import {
   osVersion,
 } from 'react-device-detect';
 import './App.css';
+import Test from "./components/test";
 
 function App() {
   const [apiData, setApiData] = useState(null);
@@ -31,7 +32,7 @@ function App() {
           width='170'
         />
       </h1>
-
+      <Test />
       <ul className='list'>
         <li>Browser: {browserName}</li>
         <li>Browser Version: {browserVersion}</li>
